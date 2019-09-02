@@ -1,0 +1,48 @@
+<!--suppress HtmlFormInputWithoutLabel -->
+<mat-label>Messages:</mat-label>
+<button mat-button color="primary" type="button" (click)="formOpen()">[ New ]</button>
+<div class="item" *ngIf="showForm">
+    <mat-form-field class="issueMessageType">
+        <mat-select placeholder="Message Type" [(ngModel)]="formMessageType">
+            <mat-option value="Investigating">Investigating</mat-option>
+            <mat-option value="Identified">Identified</mat-option>
+            <mat-option value="Update">Update</mat-option>
+            <mat-option value="Resolved">Resolved</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="issueMessageText">
+        <mat-label>Message text:</mat-label>
+        <input matInput type="text" [(ngModel)]="formMessage"/>
+    </mat-form-field>
+    <div class="buttons">
+        <button mat-button color="primary" type="button" (click)="formSave()">[ Save ]</button>
+        <button mat-button color="warn" type="button" (click)="formCancel()">[ Cancel ]</button>
+    </div>
+</div>
+<div class="item" *ngFor="let update of updates; let i = index">
+    <div class="item-text" *ngIf="updatingRow != i">
+        <div class="date">{{update.dateString}}</div>
+        <span class="status">{{update.type}}.</span>
+        <div style="width: 100%">{{update.message}}</div>
+    </div>
+    <div class="buttons" *ngIf="updatingRow != i">
+        <button mat-button color="primary" type="button" (click)="updateRow(i)">[ Update ]</button>
+        <button mat-button color="warn" type="button" (click)="deleteRow(i)">[ Delete ]</button>
+    </div>
+
+    <mat-form-field class="issueMessageType" *ngIf="updatingRow == i">
+        <mat-select placeholder="Message Type" [(ngModel)]="rowMessageType">
+            <mat-option value="Investigating">Investigating</mat-option>
+            <mat-option value="Identified">Identified</mat-option>
+            <mat-option value="Update">Update</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="issueMessageText" *ngIf="updatingRow == i">
+        <mat-label>Message text:</mat-label>
+        <input matInput type="text" [(ngModel)]="rowMessage"/>
+    </mat-form-field>
+    <div class="buttons" *ngIf="updatingRow == i">
+        <button mat-button color="primary" type="button" (click)="saveRow()">[ Save ]</button>
+        <button mat-button color="warn" type="button" (click)="cancelRow()">[ Cancel ]</button>
+    </div>
+</div>

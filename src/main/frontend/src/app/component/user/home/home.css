@@ -1,0 +1,11 @@
+#error {
+    margin-left: 40px;
+    width: 50%;
+}
+
+.logout {
+    height: 40px;
+    float: right;
+    padding-bottom: 20px;
+    padding-left: 360px;
+}

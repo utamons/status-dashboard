@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-5d{dd.MM.yy HH:mm:ss.SSS} %highlight(%-5level): %cyan(%logger{25}).%yellow(%M) %m%n</pattern>
+        </encoder>
+    </appender>
+    <!-- Turning down the wiremock logging -->
+    <logger name="com.github.tomakehurst.wiremock" level="ERROR"/>
+    <logger name="wiremock.org" level="ERROR"/>
+    <logger name="WireMock" level="ERROR"/>
+    <!-- wiremock has per endpoint servlet logging -->
+    <logger name="/" level="WARN"/>
+
+    <logger name="org.springframework" level="ERROR"/>
+    <logger name="org.hibernate" level="ERROR"/>
+    <logger name="liquibase" level="ERROR"/>
+    <logger name="com.zaxxer" level="ERROR"/>
+    <logger name="jpa.JpaTest" level="ERROR"/>
+    <logger name="org.apache.catalina" level="ERROR"/>
+    <logger name="integration" level="ERROR"/>
+    <logger name="com.corn" level="ERROR" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="integration" level="ERROR" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="unit" level="ERROR" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="util" level="ERROR" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="jpa" level="ERROR" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+</configuration>

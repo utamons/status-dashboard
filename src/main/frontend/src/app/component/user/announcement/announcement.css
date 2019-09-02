@@ -1,0 +1,25 @@
+#announcement {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 3px;
+    border-radius: 5px;
+    border: 1px solid #445588;
+    font-size: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f8f8;
+}
+
+#header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 14px;
+    padding-bottom: 20px;
+    color: dodgerblue;
+}
+
+#description {
+    font-size: medium;
+    margin-left: 30px;
+}

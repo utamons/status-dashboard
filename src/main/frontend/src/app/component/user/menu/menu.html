@@ -1,0 +1,23 @@
+<div id="menu">
+    <button mat-stroked-button routerLink="/home" routerLinkActive="menuItemActive">
+        Status
+    </button>
+    <button mat-stroked-button routerLink="/history" routerLinkActive="menuItemActive">
+        History
+    </button>
+    <button mat-stroked-button *ngIf="storage.role != 'maintainer'" routerLink="/report" routerLinkActive="menuItemActive">
+        Report Issue
+    </button>
+    <button mat-stroked-button *ngIf="storage.role != 'maintainer'" routerLink="/subscribe" routerLinkActive="menuItemActive">
+        Subscribe
+    </button>
+    <button mat-stroked-button *ngIf="storage.loggedIn() && storage.role == 'maintainer'" routerLink="/maintain" routerLinkActive="menuItemActive">
+        Maintainer
+    </button>
+    <button mat-stroked-button *ngIf="!storage.loggedIn()" routerLink="/login" routerLinkActive="menuItemActive">
+        Login
+    </button>
+    <button mat-stroked-button *ngIf="storage.loggedIn()" class="menuItem" (click)="logout()">
+        Logout
+    </button>
+</div>

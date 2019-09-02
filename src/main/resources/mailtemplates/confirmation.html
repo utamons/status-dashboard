@@ -1,0 +1,79 @@
+<style type="text/css">
+    .logo {
+        display: inline-block;
+        width: 9.9rem;
+        height: 3.6rem;
+    }
+
+    body {
+        height: 100%;
+        font-size: 62.5%;
+        font-family: NHaasGrotesk, helvetica, sans-serif;
+    }
+
+    #outer {
+        text-align: center;
+        background-color: #eaeaea;
+        height: 100%;
+        width: 100%;
+    }
+
+    #main {
+        display: inline-block;
+        width: 550px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    #upper {
+        border-radius: 10px 10px 0 0;
+        border: solid 1px #7f7f7f;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 10px 3px 2px #7f7f7f;
+    }
+
+    #content {
+        border-radius: 0 0 10px 10px;
+        border: solid 1px #7f7f7f;
+        background: white;
+        box-shadow: 0 2px 3px 2px #7f7f7f;
+        color: #444444;
+        font-size: 20px;
+        padding-bottom: 50px;
+    }
+
+    #message {
+        padding: 40px;
+    }
+
+    #content a {
+        background: rgb(44, 108, 177) none repeat scroll 0 0;
+        border-color: rgb(44, 108, 177);
+        cursor: pointer;
+        border-radius: 5px;
+        border-style: solid;
+        border-width: 10px 20px;
+        color: rgb(255, 255, 255);
+        display: inline-block;
+        font-weight: 900;
+        font-size: 17px;
+        text-decoration: none;
+        line-height: 2em;
+    }
+</style>
+<head>
+    <meta content="width=device-width" name="viewport">
+</head>
+<body>
+<div id="outer">
+    <div id="main">
+        <div id="content">
+            <div id="message">
+                Please, click the button below to confirm your subscription to the status page:
+            </div>
+            <a href="${url}">Confirm</a>
+        </div>
+    </div>
+</div>
+</body>

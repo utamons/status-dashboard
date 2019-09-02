@@ -1,0 +1,10 @@
+<div id="main">
+    <app-menu></app-menu>
+    <app-service-header></app-service-header>
+    <app-announcement *ngIf="!isActiveIssue()"></app-announcement>
+    <app-event></app-event>
+    <app-areas></app-areas>
+    <div id="error">
+        <app-error [error]="error"></app-error>
+    </div>
+</div>

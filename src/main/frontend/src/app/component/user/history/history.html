@@ -1,0 +1,38 @@
+<div id="main">
+    <app-menu></app-menu>
+    <div id="history" *ngIf="storage.serviceStatus != null">
+        <div *ngFor="let event of storage.serviceStatus.history">
+            <div id="header" class="{{event.eventType}}">
+                <span>{{event.dateShortStr()}} - {{event.statusString}}</span>
+            </div>
+            <div id="info">
+                <div class="row">
+                    <div class="label">Description:</div>
+                    <div class="description">{{event.description}}</div>
+                </div>
+                <div *ngIf="event.componentsString().length > 0" class="row">
+                    <div class="label">
+                        Components:
+                    </div>
+                    <div class="description">
+                        {{event.componentsString()}}
+                    </div>
+                </div>
+            </div>
+            <div id="hr">
+                <hr/>
+            </div>
+            <div class="updates">
+                <div *ngFor="let update of event.history" class="row">
+                    <div class="date"><span>{{update.dateString}}</span></div>
+                    <div class="update">
+                        <span class="updateStatus">{{update.type}}.</span><span>{{update.message}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="error">
+        <app-error [error]="error"></app-error>
+    </div>
+</div>

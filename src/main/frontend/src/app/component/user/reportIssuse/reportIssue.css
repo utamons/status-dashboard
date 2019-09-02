@@ -1,0 +1,32 @@
+#reportIssue {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    border: 1px solid #445588;
+    font-size: 15px;
+    padding: 20px;
+    color: #555555;
+    width: 60%;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+}
+
+#thanks {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+    height: 50px;
+}
+
+button {
+    float: right;
+}

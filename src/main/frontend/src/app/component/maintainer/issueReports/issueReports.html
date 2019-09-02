@@ -1,0 +1,30 @@
+<!--suppress HtmlFormInputWithoutLabel -->
+<div id="i-reports">
+    <app-error [error]="error"></app-error>
+    <mat-card class="item" *ngFor="let rep of reports.content; let i = index">
+        <div class="item-info">
+            <div class="item-text">
+                {{rep.reportText}}
+            </div>
+            <div class="item-remark"  *ngIf="i != updatingRow">
+                {{rep.remarkText}}
+            </div>
+            <mat-form-field class="item-input" *ngIf="i == updatingRow">
+                <mat-label>Remark:</mat-label>
+                <input matInput type="text" [(ngModel)]="rep.remarkText"/>
+            </mat-form-field>
+        </div>
+        <div class="buttons">
+            <button *ngIf="i != updatingRow" mat-button color="primary" type="button" (click)="archive(i)">[ Archive
+                ]
+            </button>
+            <button *ngIf="i != updatingRow" mat-button color="warn" type="button" (click)="add(i)">[ Add remark ]
+            </button>
+            <button *ngIf="i == updatingRow" mat-button color="warn" type="button" (click)="save(i)">[ Save remark
+                ]
+            </button>
+            <button *ngIf="i == updatingRow" mat-button color="warn" type="button" (click)="cancel(i)">[ Cancel ]
+            </button>
+        </div>
+    </mat-card>
+</div>

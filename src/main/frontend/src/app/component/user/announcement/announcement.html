@@ -1,0 +1,8 @@
+<mat-card *ngIf="storage.announcement != null" id="announcement">
+    <mat-card-header id="header">
+        <span>Announcement: {{storage.announcement.header}}</span>
+    </mat-card-header>
+    <mat-card-content id="description">
+        <span>{{storage.announcement.description}}</span>
+    </mat-card-content>
+</mat-card>

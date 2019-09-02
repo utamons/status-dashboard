@@ -1,0 +1,50 @@
+#areas {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #445588;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 50%;
+    padding: 0!important;
+}
+
+#header {
+    font-size: 15px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    padding: 8px 8px 8px 20px;
+    color: #f8f8f8;
+    margin-top: 2px!important;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 15px;
+}
+
+.name {
+    font-weight: bold;
+    float: left;
+    color: #555555;
+}
+
+.status {
+    float: right;
+    text-align: right;
+    width: 60%;
+}
+
+.row {
+    width: 100%;
+}
+
+.item {
+    height: 43px!important;
+}
+
+.list {
+    padding-bottom: 20px;
+}
+

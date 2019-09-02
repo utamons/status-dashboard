@@ -1,0 +1,46 @@
+#i-reports {
+    margin: 3px 40px 10px;
+    border-radius: 5px;
+    border: 1px solid #445588;
+    font-size: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f8f8;
+    width: 60%;
+}
+
+.item {
+    border-radius: 10px;
+    border: 1px solid #445588;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.item-remark {
+    margin-top: 10px;
+    font-style: italic;
+    color: #7f7f7f;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.item-input {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.buttons {
+    width: 100px;
+}
+
+.buttons button {
+    min-width: 100px;
+}

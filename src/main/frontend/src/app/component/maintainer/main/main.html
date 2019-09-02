@@ -1,0 +1,82 @@
+<!--suppress HtmlUnknownAttribute -->
+<div id="main">
+    <app-menu></app-menu>
+    <div id="maintainer">
+        <div id="buttons">
+            <button *ngIf="!isActiveIssue()"
+                    mat-raised-button
+                    color="primary"
+                    (click)="newIssue()"
+                    [disabled]="issueButtonDisabled">
+                New Issue
+            </button>
+            <button *ngIf="isActiveIssue()"
+                    mat-raised-button
+                    color="primary"
+                    (click)="updateIssue()"
+                    [disabled]="issueButtonDisabled">
+                Update Issue
+            </button>
+            <button *ngIf="isActiveIssue()"
+                    mat-raised-button
+                    color="accent"
+                    title="Resolve Issue"
+                    type="submit"
+                    [disabled]="issueButtonDisabled"
+                    (click)="resolveIssue()">
+                Resolve
+            </button>
+            <button *ngIf="isIssueReports()"
+                    [ngStyle]="{'margin-right':(issueReportsBadge.length>0?17:10)+'px'}"
+                    mat-raised-button color="primary"
+                    title="{{issueReportsButtonText}}"
+                    type="button"
+                    [disabled]="issueReportButtonDisabled"
+                    matBadge="{{issueReportsBadge}}"
+                    matBadgeColor="accent"
+                    (click)="issueReports()">
+                {{issueReportsButtonText}}
+            </button>
+            <button *ngIf="!isActiveIssue() && !hasAnnouncement()"
+                    mat-raised-button color="primary"
+                    (click)="newAnnouncement()"
+                    [disabled]="annoButtonDisabled">
+                New Announcement
+            </button>
+            <button *ngIf="!isActiveIssue() && hasAnnouncement()"
+                    mat-raised-button
+                    color="primary"
+                    (click)="updateAnnouncement()"
+                    [disabled]="annoButtonDisabled">
+                Update Announcement
+            </button>
+            <button *ngIf="!isActiveIssue() && hasAnnouncement()"
+                    mat-raised-button
+                    color="accent"
+                    (click)="deleteAnnouncement()"
+                    [disabled]="annoButtonDisabled">
+                Delete Announcement
+            </button>
+        </div>
+        <app-issue [currentStatus]="currentStatus"
+               *ngIf="showIssueForm"
+               (submitEvent)=submitIssueForm($event)
+               (cancelEvent)="cancelIssueForm()">
+
+        </app-issue>
+        <app-announcement-form
+                [announcement]="currentAnnouncement"
+                *ngIf="showAnnouncementForm"
+                (submitEvent)=submitAnnouncementForm($event)
+                (cancelEvent)="cancelAnnouncementForm()">
+        </app-announcement-form>
+    </div>
+    <div id="error">
+        <app-error [error]="error"></app-error>
+    </div>
+    <app-i-reports *ngIf="showIssueReportPage" [reports]="issueReportPage" (updateEvent)="reloadIssueReports()"></app-i-reports>
+    <app-service-header></app-service-header>
+    <app-announcement *ngIf="!isActiveIssue()"></app-announcement>
+    <app-event></app-event>
+    <app-areas></app-areas>
+</div>

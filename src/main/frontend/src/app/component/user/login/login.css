@@ -1,0 +1,34 @@
+#loginForm {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    border: 1px solid #445588;
+    font-size: 15px;
+    padding: 20px;
+    color: #555555;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    font-size: 15px;
+    width: 100%;
+}
+
+button {
+    float: right;
+    margin-top: 10px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-top: 20px;
+}

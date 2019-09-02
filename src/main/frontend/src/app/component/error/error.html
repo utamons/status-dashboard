@@ -1,0 +1,6 @@
+<mat-card *ngIf="error != null" id="error">
+    <mat-card-header *ngIf="error.header != null && error.header.length > 0" id="header">{{error.header}}</mat-card-header>
+    <mat-card-content id="description">
+        {{message()}}
+    </mat-card-content>
+</mat-card>

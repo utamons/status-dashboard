@@ -1,0 +1,275 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="autoIncrement" value="true" dbms="mysql"/>
+    <property name="autoIncrement" value="false" dbms="oracle,h2"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+    <property name="now" value="now()" dbms="mysql,h2"/>
+
+    <changeSet id="2018-10-09-status" author="Oleg_Z">
+        <createTable remarks="Current service status." tableName="SERVICE_STATUS">
+            <column name="ID"  type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" primaryKeyName="SERVICE_STATUS_PK" />
+            </column>
+            <column name="STATUS_STRING" type="VARCHAR(1024)" remarks="Human readable status">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STATUS_TYPE" type="VARCHAR(64)" remarks="The type of the status (accident,partial,maintenance,normal)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPTION" type="VARCHAR(1024)" remarks="The description of the status">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EVENT_ID" type="BIGINT" remarks="The key of the current issue"/>
+            <column name="CURRENT_STATUS" type="BOOLEAN" defaultValueBoolean="false" remarks="Is the status current.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPDATED_AT" type="DATETIME" remarks="The date and time ot the last update of the status"/>
+            <column name="UPDATED_BY" type="VARCHAR(512)" remarks="Who updated the status"/>
+        </createTable>
+
+        <createTable remarks="Service event - normal, maintenance or an issue." tableName="SERVICE_EVENT">
+            <column name="ID"  type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" primaryKeyName="SERVICE_EVENT_PK" />
+            </column>
+            <column name="EVENT_DATE" type="DATETIME" remarks="Date and time of the service event.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STATUS_STRING" type="VARCHAR(1024)" remarks="Human readable status of the event">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EVENT_TYPE" type="VARCHAR(64)" remarks="The type of the event (accident,partial,maintenance,normal)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPTION" type="VARCHAR(1024)" remarks="The description of the event">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COMPONENTS_STRING" type="VARCHAR(1024)" remarks="The comma separated list of affected components">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RESOLVED" type="BOOLEAN" defaultValueBoolean="false" remarks="Is the issue was resolved/closed ">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_AT" type="DATETIME" remarks="The date and time when the event has been created">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(512)" remarks="Who created the event">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPDATED_AT" type="DATETIME" remarks="The date and time ot the last update of the event"/>
+            <column name="UPDATED_BY" type="VARCHAR(512)" remarks="Who updated the event"/>
+        </createTable>
+
+        <createTable remarks="Current service components." tableName="SERVICE_COMPONENT">
+            <column name="ID"  type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" primaryKeyName="SERVICE_COMPONENT_PK" />
+            </column>
+            <column name="NAME" type="VARCHAR(512)" remarks="The name of the component.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STATUS_STRING" type="VARCHAR(1024)" remarks="Human readable status of the component">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STATUS_TYPE" type="VARCHAR(64)" remarks="The type of the component status (accident,partial,maintenance,normal)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPDATED_AT" type="DATETIME" remarks="The date and time ot the last update of the status"/>
+            <column name="UPDATED_BY" type="VARCHAR(512)" remarks="Who updated the status"/>
+        </createTable>
+
+        <createTable remarks="Event update record." tableName="EVENT_UPDATE">
+            <column name="ID"  type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" primaryKeyName="EVENT_UPDATE_PK" />
+            </column>
+            <column name="UPDATE_DATE" type="DATETIME" remarks="Date and time of the update.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TYPE" type="VARCHAR(128)" remarks="Human readable type of the update.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MESSAGE" type="VARCHAR(1024)" remarks="Update message.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EVENT_ID" type="BIGINT" remarks="The key of the event of the update.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_AT" type="DATETIME" remarks="The date and time when the update has been created">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(512)" remarks="Who created the update">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPDATED_AT" type="DATETIME" remarks="The date and time ot the last change of the update"/>
+            <column name="UPDATED_BY" type="VARCHAR(512)" remarks="Who changed the update"/>
+        </createTable>
+
+        <createTable remarks="Announcement." tableName="ANNOUNCEMENT">
+            <column name="ID"  type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" primaryKeyName="ANNOUNCEMENT_PK" />
+            </column>
+            <column name="ANNOUNCEMENT_DATE" type="DATETIME" remarks="Date and time of the announcement.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="HEADER" type="VARCHAR(1024)" remarks="Header of the announcement.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPTION" type="VARCHAR(2048)" remarks="The description of the announcement">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACTIVE" type="BOOLEAN" remarks="Is the announcement is active">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_AT" type="DATETIME" remarks="The date and time when the announcement has been created">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(512)" remarks="Who created the announcement">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPDATED_AT" type="DATETIME" remarks="The date and time ot the last change of the announcement"/>
+            <column name="UPDATED_BY" type="VARCHAR(512)" remarks="Who changed the announcement"/>
+        </createTable>
+
+        <createTable remarks="Users." tableName="APP_USER">
+            <column name="ID"  type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" primaryKeyName="APP_USER_PK" />
+            </column>
+            <column name="USERNAME" type="VARCHAR(1024)" remarks="Username.">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="PASSWORD" type="VARCHAR(128)" remarks="Password.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FIRST_NAME" type="VARCHAR(512)" remarks="The first name">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LAST_NAME" type="VARCHAR(512)" remarks="The last name">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ROLE" type="VARCHAR(64)" remarks="Role">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACTIVE" type="BOOLEAN" remarks="Is the user is able to login">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable remarks="User USER_SESSION." tableName="USER_SESSION">
+            <column name="ID"  type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" primaryKeyName="USER_SESSION_PK" />
+            </column>
+            <column name="USER_ID" type="BIGINT" remarks="User key.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_AT" type="DATETIME" remarks="The date and time when the USER_SESSION has been created">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EXPIRED_AT" type="DATETIME" remarks="The date and time when the USER_SESSION will be expired">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TOKEN" type="VARCHAR(512)" remarks="The USER_SESSION token.">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="EVENT_UPDATE"
+                                 baseColumnNames="EVENT_ID"
+                                 constraintName="STATUS_TO_EVENT_FK"
+                                 referencedTableName="SERVICE_EVENT"
+                                 referencedColumnNames="ID"/>
+
+        <addForeignKeyConstraint baseTableName="SERVICE_STATUS"
+                                 baseColumnNames="EVENT_ID"
+                                 constraintName="UPDATE_TO_EVENT_FK"
+                                 referencedTableName="SERVICE_EVENT"
+                                 referencedColumnNames="ID"/>
+
+        <addForeignKeyConstraint baseTableName="USER_SESSION"
+                                 baseColumnNames="USER_ID"
+                                 constraintName="SESSION_TO_USER_FK"
+                                 referencedTableName="APP_USER"
+                                 referencedColumnNames="ID"/>
+
+    </changeSet>
+
+    <changeSet id="2018-10-09-users" author="Oleg_Z">
+        <loadData tableName="APP_USER" file="db/users.csv">
+            <column name="ID" type="NUMERIC"/>
+            <column name="USERNAME" type="STRING"/>
+            <column name="PASSWORD" type="STRING"/>
+            <column name="FIRST_NAME" type="STRING"/>
+            <column name="LAST_NAME" type="STRING"/>
+            <column name="ROLE" type="STRING"/>
+            <column name="ACTIVE" type="STRING"/>
+        </loadData>
+        <loadData tableName="SERVICE_STATUS" file="db/status.csv" separator="|">
+            <column name="ID" type="NUMERIC"/>
+            <column name="STATUS_STRING" type="STRING"/>
+            <column name="STATUS_TYPE" type="STRING"/>
+            <column name="DESCRIPTION" type="STRING"/>
+            <column name="CURRENT_STATUS" type="STRING"/>
+            <column name="UPDATED_BY" type="STRING"/>
+        </loadData>
+        <loadData tableName="SERVICE_COMPONENT" file="db/components.csv">
+            <column name="ID" type="NUMERIC"/>
+            <column name="STATUS_STRING" type="STRING"/>
+            <column name="STATUS_TYPE" type="STRING"/>
+            <column name="DESCRIPTION" type="STRING"/>
+            <column name="CURRENT_STATUS" type="STRING"/>
+            <column name="UPDATED_BY" type="STRING"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="2018-10-09-sequences" author="Oleg_Z" dbms="oracle,h2">
+
+        <createSequence sequenceName="SEQ_SERVICE_STATUS" incrementBy="1" startValue="100"/>
+        <createSequence sequenceName="SEQ_SERVICE_EVENT" incrementBy="1" startValue="100"/>
+        <createSequence sequenceName="SEQ_SERVICE_COMPONENT" incrementBy="1" startValue="100"/>
+        <createSequence sequenceName="SEQ_EVENT_UPDATE" incrementBy="1" startValue="100"/>
+        <createSequence sequenceName="SEQ_ANNOUNCEMENT" incrementBy="1" startValue="100"/>
+        <createSequence sequenceName="SEQ_APP_USER" incrementBy="1" startValue="100"/>
+        <createSequence sequenceName="SEQ_USER_SESSION" incrementBy="1" startValue="100"/>
+
+    </changeSet>
+
+    <changeSet id="2018-10-16-issue-report" author="Oleg_Z">
+        <createTable remarks="Issue reports from users." tableName="ISSUE_REPORT">
+            <column name="ID"  type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" primaryKeyName="ISSUE_REPORT_PK" />
+            </column>
+            <column name="REPORT_TEXT" type="TEXT" remarks="report text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="REMARK_TEXT" type="TEXT" remarks="remark of maintainer or support personnel"/>
+            <column name="CREATED_AT" type="DATETIME" remarks="The date and time when the USER_SESSION has been created">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PROCESSED_AT" type="DATETIME" remarks="The date and time when the USER_SESSION will be expired"/>
+            <column name="PROCESSED_BY" type="VARCHAR(512)" remarks="Who processed the report"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2018-10-16-issue-report-seq" author="Oleg_Z" dbms="oracle,h2">
+        <createSequence sequenceName="SEQ_ISSUE_REPORT" incrementBy="1" startValue="100"/>
+    </changeSet>
+
+    <changeSet id="2018-10-16-issue-report-col" author="Oleg_Z" dbms="oracle,h2">
+        <addColumn tableName="ISSUE_REPORT">
+            <column name="PROCESSED" type="BOOLEAN" defaultValueBoolean="false">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="2018-10-17-subscription" author="Oleg_Z">
+        <createTable remarks="Subscriptions." tableName="SUBSCRIPTION">
+            <column name="EMAIL" type="VARCHAR(256)" remarks="report text">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="SUBSCRIPTION_PK"/>
+            </column>
+            <column name="HASH" type="VARCHAR(128)" remarks="Hash code for verification of the subscription"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

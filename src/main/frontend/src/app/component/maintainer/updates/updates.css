@@ -1,0 +1,51 @@
+
+.status {
+    font-weight: bolder;
+    margin-right: 10px
+}
+
+.item-text {
+    margin-left: 10px;
+    margin-top: 28px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.date {
+    width: 200px;
+    min-width: 200px;
+    font-weight: bold;
+    color: #7f7f7f;
+    float: left;
+}
+
+.buttons {
+    width: 100px;
+}
+
+.buttons button {
+    min-width: 100px;
+}
+
+.item {
+    height: min-content;
+    border-radius: 10px;
+    border: 1px solid #445588;
+    margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.issueMessageType {
+    float: left;
+    margin-right: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.issueMessageText {
+    width: 100%;
+    margin-top: 10px;
+}

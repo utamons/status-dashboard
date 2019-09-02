@@ -1,0 +1,30 @@
+<!--suppress HtmlFormInputWithoutLabel -->
+<form #createForm="ngForm" [formGroup]="loginForm"  (ngSubmit)="submit()" (keydown.enter)="formGroupEnter($event)">
+    <div id="main">
+        <app-menu></app-menu>
+        <mat-card id="loginForm">
+            <mat-card-content class="form">
+                <mat-form-field>
+                    <mat-label>Username:</mat-label>
+                    <input matInput type="text" formControlName="username"/>
+                    <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
+                        required
+                    </mat-error>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-content class="form">
+                <mat-form-field>
+                    <mat-label>Password:</mat-label>
+                    <input matInput type="password" formControlName="password"/>
+                    <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                        required
+                    </mat-error>
+                </mat-form-field>
+            </mat-card-content>
+            <div id="button">
+                <button mat-raised-button color="primary" type="submit" title="Submit">Submit</button>
+            </div>
+            <app-error [error]="error"></app-error>
+        </mat-card>
+    </div>
+</form>

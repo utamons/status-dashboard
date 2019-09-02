@@ -1,0 +1,7 @@
+ID,NAME,STATUS_STRING,STATUS_TYPE
+1,Tax,Operational,normal
+2,Credit Card Processing,Operational,normal
+3,Vendor Gateway,Operational,normal
+4,PayPal Gateway,Operational,normal
+5,Merchant Care,Operational,normal
+6,Self Care,Operational,normal

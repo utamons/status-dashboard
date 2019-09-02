@@ -1,0 +1,27 @@
+<mat-card *ngIf="storage.serviceStatus != null && storage.serviceStatus.currentEvent != null" id="event">
+    <mat-card-header id="header" class="{{storage.serviceStatus.currentEvent.eventType}}">
+        <span>{{storage.serviceStatus.currentEvent.statusString}}</span>
+    </mat-card-header>
+    <mat-card-content id="info">
+        <div class="row">
+            <div class="label">Description:</div>
+            <div class="description">{{storage.serviceStatus.currentEvent.description}}</div>
+        </div>
+        <div *ngIf="storage.serviceStatus.currentEvent.componentsString().length > 0" class="row">
+            <div class="label">
+                Components:
+            </div>
+            <div class="description">
+                {{storage.serviceStatus.currentEvent.componentsString()}}
+            </div>
+        </div>
+    </mat-card-content>
+    <div id="hr"><hr/></div>
+    <mat-card-content id="updates">
+        <div *ngFor="let update of storage.serviceStatus.currentEvent.history" class="row">
+            <div class="date"><span>{{update.dateString}}</span></div>
+            <div class="update">
+                <span class="updateStatus">{{update.type}}.</span><span>{{update.message}}</span></div>
+        </div>
+    </mat-card-content>
+</mat-card>

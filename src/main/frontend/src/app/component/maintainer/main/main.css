@@ -1,0 +1,16 @@
+#error {
+    margin-left: 40px;
+    width: 50%;
+}
+#maintainer {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    /*background-color: #f8f8f8;*/
+}
+
+#buttons button {
+    margin-right: 10px;
+}

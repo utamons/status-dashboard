@@ -1,0 +1,3 @@
+todo exclude duplicated code
+todo 90-100% tests coverage
+todo pay all technical debt

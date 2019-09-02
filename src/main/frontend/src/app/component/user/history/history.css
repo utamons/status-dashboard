@@ -1,0 +1,95 @@
+#error {
+  margin-left: 40px;
+  width: 50%;
+}
+
+#history {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 2px solid #dddddd;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  /*min-height: 10vh;*/
+  background-color: white;
+}
+
+#main {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+.info {
+  font-size: 14px;
+}
+
+.updates {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.partial {
+  font-size: 14px;
+  padding: 12px;
+  background-color: #eb945d;
+  color: #f8f8f8;
+  margin: 2px 2px 15px;
+}
+
+.accident {
+  font-size: 14px;
+  padding: 12px;
+  background-color: #dd1144;
+  color: #f8f8f8;
+  margin: 2px 2px 15px;
+}
+
+.maintenance {
+  font-size: 14px;
+  padding: 12px;
+  background-color: dodgerblue;
+  color: #f8f8f8;
+  margin: 2px 2px 15px;
+}
+
+.label {
+  font-weight: bold;
+  float: left;
+  padding-left: 20px;
+}
+
+.description {
+  float: right;
+  padding-right: 20px;
+  width: 80%;
+}
+
+.date {
+  font-weight: bold;
+  float: left;
+  padding-left: 20px;
+  color: #7f7f7f;
+}
+
+.update {
+  float: right;
+  padding-right: 20px;
+  width: 80%;
+}
+
+.updateStatus {
+  padding-right: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.row {
+  float: left;
+  padding-bottom: 15px;
+  width: 100%;
+}
+

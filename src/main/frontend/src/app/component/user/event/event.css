@@ -1,0 +1,73 @@
+#event {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #445588;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 0!important;
+}
+
+#info {
+    font-size: 14px;
+    margin-bottom: 0!important;
+}
+
+#header {
+    font-size: 18px;
+    font-weight: bolder;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    padding: 12px 12px 12px 20px;
+    color: #f8f8f8;
+    margin-top: 2px!important;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 25px;
+}
+
+#updates {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.label {
+    font-weight: bold;
+    float: left;
+    padding-left: 20px;
+}
+
+.description {
+    float: right;
+    padding-right: 20px;
+    width: 80%;
+}
+
+.date {
+    font-weight: bold;
+    float: left;
+    padding-left: 20px;
+    color: #7f7f7f;
+}
+
+.update {
+    float: right;
+    padding-right: 20px;
+    width: 80%;
+}
+
+.updateStatus {
+    padding-right: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.row {
+    float: left;
+    width: 100%;
+    height: 37px;
+}
+

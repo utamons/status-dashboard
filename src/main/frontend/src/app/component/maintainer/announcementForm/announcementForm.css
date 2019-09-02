@@ -1,0 +1,17 @@
+#announcement {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 300px;
+    border: 1px solid black;
+}
+
+#submit button {
+    float: right;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}

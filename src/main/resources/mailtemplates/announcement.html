@@ -1,0 +1,97 @@
+<style type="text/css">
+    .logo {
+        display: inline-block;
+        width: 9.9rem;
+        height: 3.6rem;
+    }
+
+    h2 {
+        display: block;
+        font-size: 40px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    h3 {
+        display: block;
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+
+    #title {
+        font-size: 50px;
+        line-height: 0.9;
+        margin: 70px auto 70px;
+    }
+
+    body {
+        height: 100%;
+        font-size: 62.5%;
+        font-family: NHaasGrotesk, helvetica, sans-serif;
+    }
+
+    #outer {
+        text-align: center;
+        background-color: #eaeaea;
+        height: 100%;
+        width: 100%;
+    }
+
+    #main {
+        display: inline-block;
+        width: 550px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    #upper {
+        border-radius: 10px 10px 0 0;
+        border: solid 1px #7f7f7f;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 10px 3px 2px #7f7f7f;
+    }
+
+    #content {
+        border-radius: 0 0 10px 10px;
+        border: solid 1px #7f7f7f;
+        background: white;
+        box-shadow: 0 2px 3px 2px #7f7f7f;
+        color: #444444;
+        font-size: 20px;
+        padding-bottom: 50px;
+    }
+
+    #bottom {
+        margin-top: 15px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .maintenanceColor {
+        color: dodgerblue;
+    }
+</style>
+<head>
+    <meta content="width=device-width" name="viewport">
+</head>
+<body>
+<div id="outer">
+    <div id="main">
+        <div id="content">
+            <div id="title" class="maintenanceColor">
+                <h2>${header}</h2>
+            </div>
+            <div id="update">
+                <h3>ANNOUNCEMENT</h3>
+                ${announcement}
+            </div>
+        </div>
+        <div id="bottom">
+            <a href="${url}">Unsubscribe</a>
+        </div>
+    </div>
+</div>
+</body>

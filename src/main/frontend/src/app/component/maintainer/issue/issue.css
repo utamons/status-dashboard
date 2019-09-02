@@ -1,0 +1,46 @@
+#issue {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 300px;
+    border: 1px solid black;
+}
+
+#submit button {
+    float: right;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#issueType {
+    width: 20%;
+}
+
+#components {
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    /*border: 1px solid #445588;*/
+    width: 50%;
+}
+
+#issueMessageBox {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#issueMessageType {
+    margin-right: 20px;
+}
+
+#issueMessageText {
+    width: inherit;
+}
+
+#updates {
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}

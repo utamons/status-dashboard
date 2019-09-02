@@ -1,0 +1,11 @@
+<mat-card class="serviceHeader" *ngIf="storage.serviceStatus != null">
+    <mat-card-title id="title" class="{{storage.serviceStatus.statusType}}Color">
+        {{storage.serviceStatus.statusString}}
+    </mat-card-title>
+    <mat-card-subtitle id="date">
+        {{storage.serviceStatus.dateStr()}}
+    </mat-card-subtitle>
+    <mat-card-content id="description">
+        {{storage.serviceStatus.description}}
+    </mat-card-content>
+</mat-card>

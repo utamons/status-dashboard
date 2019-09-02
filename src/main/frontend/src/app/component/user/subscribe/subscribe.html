@@ -1,0 +1,27 @@
+<!--suppress HtmlFormInputWithoutLabel -->
+<form #createForm="ngForm" [formGroup]="subscriptionForm" (keydown.enter)="formGroupEnter($event)" (ngSubmit)="submit()">
+    <div id="main">
+        <app-menu></app-menu>
+        <mat-card id="subscribe">
+            <mat-card-content *ngIf="showForm" id="form">
+                <mat-form-field>
+                    <mat-label>Please enter your email to subscribe:</mat-label>
+                    <input matInput type="email" formControlName="email"/>
+                    <mat-error *ngIf="subscriptionForm.controls['email'].hasError('required')">
+                        required
+                    </mat-error>
+                    <mat-error *ngIf="subscriptionForm.controls['email'].hasError('email')">
+                        invalid email
+                    </mat-error>
+                </mat-form-field>
+                <div id="button">
+                    <button mat-raised-button color="primary" title="Submit" type="submit">Submit</button>
+                </div>
+            </mat-card-content>
+            <mat-card-content *ngIf="showMessage" id="thanks">
+                {{message}}
+            </mat-card-content>
+            <app-error [error]="error"></app-error>
+        </mat-card>
+    </div>
+</form>

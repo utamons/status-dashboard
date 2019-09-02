@@ -1,0 +1,19 @@
+<!--suppress HtmlFormInputWithoutLabel -->
+<div id="main">
+    <app-menu></app-menu>
+    <mat-card id="reportIssue">
+        <mat-card-content *ngIf="!showThanks" id="form">
+            <mat-form-field appearance="legacy">
+                <mat-label>Here you can report an issue:</mat-label>
+                <textarea (keyup)="autoGrow($event.srcElement)" matInput [(ngModel)]="text" ></textarea>
+            </mat-form-field>
+            <div id="button">
+                <button mat-raised-button color="primary" title="Submit" (click)="submit()">Submit</button>
+            </div>
+            <app-error [error]="error"></app-error>
+        </mat-card-content>
+        <mat-card-content *ngIf="showThanks" id="thanks">
+            Thank you for your report! Our team will get it soon!
+        </mat-card-content>
+    </mat-card>
+</div>

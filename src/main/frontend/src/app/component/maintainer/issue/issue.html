@@ -1,0 +1,82 @@
+<!--suppress HtmlFormInputWithoutLabel, HtmlUnknownAttribute -->
+<form #createForm="ngForm" [formGroup]="issueForm" (ngSubmit)="submitIssue()">
+    <mat-card id="issue" class="form">
+        <mat-card-content class="form">
+            <mat-form-field id="issueType">
+                <mat-select formControlName="statusType" placeholder="Issue Type">
+                    <mat-option value="partial">Degradation</mat-option>
+                    <mat-option value="accident">Disruption</mat-option>
+                    <mat-option value="maintenance">Maintenance</mat-option>
+                </mat-select>
+                <mat-error *ngIf="issueForm.controls['statusType'].hasError('required')">
+                    required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Header:</mat-label>
+                <input matInput type="text" formControlName="statusString"/>
+                <mat-error *ngIf="issueForm.controls['statusString'].hasError('required')">
+                    required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Description:</mat-label>
+                <input matInput type="text" formControlName="description"/>
+                <mat-error *ngIf="issueForm.controls['description'].hasError('required')">
+                    required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Sub-Header:</mat-label>
+                <input matInput type="text" formControlName="currentEventStatusString"/>
+                <mat-error *ngIf="issueForm.controls['currentEventStatusString'].hasError('required')">
+                    required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Sub-Header Description:</mat-label>
+                <input matInput type="text"  formControlName="currentEventDescription"/>
+                <mat-error *ngIf="issueForm.controls['currentEventDescription'].hasError('required')">
+                    required
+                </mat-error>
+            </mat-form-field>
+            <div id="issueMessageBox">
+                <app-updates id="updates" *ngIf="isActiveIssue()" [updates] = "currentStatus.currentEvent.history" (updatesEvent) = "getUpdateEvents($event)" ></app-updates>
+                <mat-form-field id="issueMessageType" *ngIf="!isActiveIssue()">
+                    <mat-select placeholder="Message Type" formControlName="issueMessageType">
+                        <mat-option value="Investigating">Investigating</mat-option>
+                        <mat-option value="Identified">Identified</mat-option>
+                        <mat-option value="Update">Update</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="issueForm.controls['issueMessageType'].hasError('required')">
+                        required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field id="issueMessageText" *ngIf="!isActiveIssue()">
+                    <mat-label>Message text:</mat-label>
+                    <input matInput type="text" formControlName="issueMessage"/>
+                    <mat-error *ngIf="issueForm.controls['issueMessage'].hasError('required')">
+                        required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <mat-label style="margin-top: 15px">Affected components:</mat-label>
+        </mat-card-content>
+        <mat-card-content id="components">
+            <mat-selection-list #componentsSelection>
+                <mat-list-option (click)="selectComponents(componentsSelection)" *ngFor="let c of currentStatus.components" [selected]="c.statusType != 'normal'">
+                    {{c.name}}
+                </mat-list-option>
+            </mat-selection-list>
+            <mat-error *ngIf="componentsNotValid">
+                please, select at least one component
+            </mat-error>
+        </mat-card-content>
+        <div id="submit">
+            <button mat-raised-button color="primary" title="Submit" type="submit">{{buttonText}}</button>
+            <button mat-raised-button color="primary" title="Cancel" type="reset" (click)="cancelIssue()">Cancel</button>
+        </div>
+    </mat-card>
+</form>
+
+
