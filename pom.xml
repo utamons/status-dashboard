@@ -8,7 +8,7 @@
     <version>0.1.0</version>
 
     <properties>
-        <sb.version>2.1.0.RELEASE</sb.version>
+        <sb.version>2.5.12</sb.version>
         <java.version>1.8</java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
